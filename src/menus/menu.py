@@ -1,6 +1,4 @@
 from .menu_option import MenuOption
-from typing import Callable, Optional, TypedDict, Tuple
-
 
 class Menu:
     def __init__(self, options: list[MenuOption]) -> None:
@@ -16,7 +14,12 @@ class Menu:
 
             choice = input("Enter your choice: ")
             option = next(
-                (option for option in self.options if option.char == choice), None
+                (
+                    option
+                    for option in self.options
+                    if option.char.lower() == choice.lower()
+                ),
+                None,
             )
             if option is None:
                 print(f"Unknown option [{choice}]. Please try again...")
