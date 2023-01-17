@@ -19,6 +19,7 @@ class AccountService:
 
     def create(self) -> Tuple[Account, str]:
 
+        # TODO: We might be creating a duplicate number here. We should check
         account_number = self.create_account_number()
         pin = self.create_pin_number()
 
@@ -48,6 +49,7 @@ class AccountService:
             print(f"Account with number [{account_number}] does not exist")
             return None
 
+        # TODO: Add feature to try 3 times...
         pin = input("Please enter your 4 digit pin: ")
 
         hashed_pin = self.hash(pin)
